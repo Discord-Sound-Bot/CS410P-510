@@ -1,9 +1,7 @@
-import urllib
 from playsound import playsound
 import speech_recognition as sr
 from datetime import datetime
 import pyttsx3
-import random
 import pytz
 import os
 import urllib.request
@@ -71,28 +69,61 @@ def time():
     tz_NY = pytz.timezone('America/Los_Angeles')
     datetime_NY = datetime.now(tz_NY)
     print(datetime_NY.strftime("%I:%M %p"))
-    tts(datetime_NY.strftime("%I:%M %p"))
+    tts("The time is " + datetime_NY.strftime("%I:%M %p"))
 
 
 def main():
     quit = True
     discord = False
+    attempts = 0
     while quit:
         try:
             phrase = speech()
-            if 'hey Discord' in phrase or discord:
+            if 'hey discord' in phrase or discord:
                 if not discord:
                     tts("Yes?")
                 discord = True
+                if 'play' and 'random' in phrase:
+                    #TODO: [STRETCH] find a random song
+                    pass
+
                 if 'play' in phrase:
                     ytsearch(phrase)
+
+
+                if 'queue' in phrase:
+                    #TODO: Queue the song
+                    pass
+
+                if 'pause' in phrase:
+                    #TODO: Implement the Pause functionality
+                    pass
+                
+                if 'resume' in phrase:
+                    #TODO: continue / unplay the song
+                    pass
+
+                if 'stop' in phrase:
+                    #TODO: stop the music.
+                    pass
+
                 if 'time' in phrase:
                     time()
-                if 'quit' in phrase:
+
+                if 'quit' or 'leave' in phrase:
                     tts("shutting down")
                     quit = False
+
+            attempts = 0
+
         except:
-            pass
+            #TODO: What are possible excepts we can receive? 
+            if attempts <= 3:
+                tts("There's been an error. Please restart the bot.")
+                quit = False
+            else:
+                tts("I couldn't understand that, please try again.")
+            attempts += 1
 
 
 if __name__ == "__main__":
