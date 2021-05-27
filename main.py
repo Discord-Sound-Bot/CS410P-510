@@ -71,6 +71,15 @@ def time():
     print(datetime_NY.strftime("%I:%M %p"))
     tts("The time is " + datetime_NY.strftime("%I:%M %p"))
 
+# Requires phrase recorded, then outputs just the command after hey discord
+# Used to have bot output .commands
+def dot_parse(str, sub):
+    i = str.find(sub)
+    if i != -1:
+        return "." + str[i:]
+    else:
+        raise Exception('Command has an error')
+
 
 def main():
     quit = True
@@ -93,18 +102,26 @@ def main():
 
                 if 'queue' in phrase:
                     #TODO: Queue the song
+                    parsed_phrase = dot_parse(phrase, 'queue')
+                    #TODO: Make bot type queue command
                     pass
 
                 if 'pause' in phrase:
                     #TODO: Implement the Pause functionality
+                    parsed_phrase = dot_parse(phrase, 'pause')
+                    #TODO: Make bot type pause command
                     pass
                 
                 if 'resume' in phrase:
                     #TODO: continue / unplay the song
+                    parsed_phrase = dot_parse(phrase, 'resume')
+                    #TODO: Make bot type resume command
                     pass
 
                 if 'stop' in phrase:
                     #TODO: stop the music.
+                    parsed_phrase = dot_parse(phrase, 'stop')
+                    #TODO: Make bot type stop command
                     pass
 
                 if 'time' in phrase:
@@ -112,6 +129,8 @@ def main():
 
                 if 'quit' or 'leave' in phrase:
                     tts("shutting down")
+                    parsed_phrase = dot_parse(phrase, 'leave')
+                    #TODO: Make bot type leave
                     quit = False
 
             attempts = 0
