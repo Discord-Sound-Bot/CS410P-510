@@ -1,16 +1,9 @@
 import os
 from discord.ext import commands
 
-# Author: Noah Funderburgh
-# Date: 10/8/2020
-# Description:
-# Todo: Comment descriptions about each functions purpose, as well as parameters and return values.
-
 client = commands.Bot(command_prefix='.')
 
-
 # client.remove_command("help")
-
 
 @client.command()
 async def load(ctx, extension):

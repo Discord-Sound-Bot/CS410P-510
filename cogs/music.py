@@ -1,17 +1,16 @@
+import re
+import urllib
+import urllib.request
 import discord
 import shutil
 import youtube_dl
 import os
 from discord.utils import get
 from discord.ext import commands
+from cogs import basicFunctions
 
 queues = {}
 
-
-# Author: Noah Funderburgh
-# Date: 10/9/2020
-# Description:
-# Todo: Comment descriptions about each functions purpose, as well as parameters and return values.
 
 
 class Music(commands.Cog):
@@ -31,13 +30,14 @@ class Music(commands.Cog):
     @commands.command(pass_context=True)
     async def join(self, ctx):
         channel = ctx.author.voice.channel
-        vc = await channel.connect()
-        vc.listen(discord.UserFilter(discord.WaveSink('file.wav'), ctx.author))
+        await channel.connect()
+        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicCommands"), ctx, "hey Discord has joined the call!")
 
     @commands.command(pass_context=True, aliases=['p', 'pla'])
-    async def play(self, ctx, url: str):
+    async def play(self, ctx):
 
         def check_queue():
+
             Queue_infile = os.path.isdir("./Queue")
             if Queue_infile is True:
                 DIR = os.path.abspath(os.path.realpath("./Queue"))
@@ -98,39 +98,23 @@ class Music(commands.Cog):
 
         voice = get(self.client.voice_clients, guild=ctx.guild)
 
-        ydl_opts = {
-            'format': 'bestaudio/best',
-            # 'quiet': True,
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192',
-            }],
-        }
-
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            print("Downloading audio now\n")
-            ydl.download([url])
-
         for file in os.listdir("./"):
             if file.endswith(".mp3"):
                 name = file
                 print(f"Renamed File: {file}\n")
                 os.rename(file, "song.mp3")
-
         voice.play(discord.FFmpegPCMAudio("song.mp3"), after=lambda e: check_queue())
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 0.07
 
         nname = name.rsplit("-", 2)
-        await ctx.send(f"Playing: {nname[0]}")
+        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicCommands"), ctx, f"Playing: {nname[0]}")
         print("playing\n")
 
     @commands.command(pass_context=True, aliases=['pa', 'pau'])
     async def pause(self, ctx):
-
+        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicFunctions"), ctx, "Pausing the music!")
         voice = get(self.client.voice_clients, guild=ctx.guild)
-
         if voice and voice.is_playing():
             print("Music paused")
             voice.pause()
@@ -141,9 +125,8 @@ class Music(commands.Cog):
 
     @commands.command(pass_context=True, aliases=['r', 'res'])
     async def resume(self, ctx):
-
+        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicFunctions"), ctx, "Resuming the music!")
         voice = get(self.client.voice_clients, guild=ctx.guild)
-
         if voice and voice.is_paused():
             print("Resumed music")
             voice.resume()
@@ -154,10 +137,9 @@ class Music(commands.Cog):
 
     @commands.command(pass_context=True, aliases=['s', 'sto', 'skip'])
     async def stop(self, ctx):
+        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicFunctions"), ctx, "Skiping the song!")
         voice = get(self.client.voice_clients, guild=ctx.guild)
-
         queues.clear()
-
         if voice and voice.is_playing():
             print("Music stopped")
             voice.stop()
@@ -167,8 +149,8 @@ class Music(commands.Cog):
             await ctx.send("No music playing failed to stop")
 
     @commands.command(pass_context=True, aliases=['q', 'que'])
-    async def queue(self, ctx, url: str):
-        os.mkdir("Queue")
+    async def queue(self, ctx, song_name):
+        song_name = song_name[2:]
         Queue_infile = os.path.isdir("./Queue")
         if Queue_infile is False:
             os.mkdir("Queue")
@@ -184,6 +166,13 @@ class Music(commands.Cog):
                 queues[q_num] = q_num
 
         queue_path = os.path.abspath(os.path.realpath("Queue") + f"\song{q_num}.%(ext)s")
+
+        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicFunctions"), ctx, "searching for " + song_name)
+        search_keyword = song_name.replace(" ", "")
+        html = urllib.request.urlopen("https://www.youtube.com/results?search_query=" + search_keyword)
+        video_ids = re.findall(r"watch\?v=(\S{11})", html.read().decode())
+        print("https://www.youtube.com/watch?v=" + video_ids[0])
+        url = "https://www.youtube.com/watch?v=" + video_ids[0]
 
         ydl_opts = {
             'format': 'bestaudio/best',
@@ -206,6 +195,8 @@ class Music(commands.Cog):
     @commands.command(pass_contex=True)
     async def leave(self, ctx):
         await ctx.voice_client.disconnect()
+        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicCommands"), ctx,
+                                               "hey Discord has left the call!")
 
 
 def setup(client):
