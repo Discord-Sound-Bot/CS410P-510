@@ -104,24 +104,5 @@ class BasicFuntions(commands.Cog):
             print("Downloading audio now\n")
             ydl.download([url])
 
-    @commands.command()
-    async def helps(self, ctx):
-        embed = discord.Embed(
-            title="Hey Discord Command List",
-        )
-        embed.add_field(name=":musical_note: Music", value="`.helpMusic`", inline=True)
-        embed.add_field(name=":tools: Utility", value="`.helpUtility`", inline=True)
-        await ctx.send(embed=embed)
-
-    @commands.command(aliases=['helputility'])
-    async def helpUtility(self, ctx):
-        embed = discord.Embed(
-            title=":tools: Utility Commands",
-            description="`ping`,`8ball`",
-            colour=discord.Colour.greyple()
-        )
-        await ctx.send(embed=embed)
-
-
 def setup(client):
     client.add_cog(BasicFuntions(client))
