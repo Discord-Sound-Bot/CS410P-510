@@ -34,6 +34,34 @@ The steps to do that are:
 2. Then put in this link in your browser https://discord.gg/dCrRfbAZ6E it will ask if you want to join the server, hit accept
 
 After joining the Discord link, join the voice channel.
-In the bot text channel, type .join so that the bot joins the same channel you're in. Then, type .listen and the bot will tell
+In the bot text channel, type .join so that the bot joins the same channel you're in. 
+Then, type .listen and the bot will tell that it's listening.
+You have to say hey discord then the command for it to work
 
 Watch video to see how to run: 
+
+## Results
+
+### What worked? What didn't? 
+Our initial project proposal involved using CMU Sphinx to detect the speech and translate it into 'commands'. 
+However, CMU Sphinx had incredibly low accuracy and performed incredibly slow. 
+
+After diving a little into the rabbit hole, we decided to pivot towards the open source Speech Recognition library. 
+Unsurpisingly, Google's model was incredibly accurate and provided the functionality that we were hoping to get.
+Another problem we faced was Discord's API is very inconsistent with their audio issues.
+
+Despite the constant advancement on their repository, it is still not in a stable version that we could use for this project. 
+Instead, we decided to switch the bot to run locally, listening to the 'users' commands rather than the whole server's.
+
+In the future, we would like to have it listen to Discord directly, so that more people can make use of the bot.
+Unfortunately Discord.py doesn't support it yet, so we had to make do with listening to local audio instead.
+ 
+## Speech Functions:
+help
+play 'song name'
+queue 'song name'
+pause
+resume
+time
+skip
+quit
