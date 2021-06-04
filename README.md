@@ -1,4 +1,8 @@
 # CS410 / 510
+# By
+Noah Funderburgh [nof2@pdx.edu]
+Alejandro Castaneda [cas29@pdx.edu]
+Long Huynh [lonhuynh@pdx.edu]
 
 ## Getting Started
 
