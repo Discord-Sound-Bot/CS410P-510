@@ -17,5 +17,9 @@ bot is ready it will output "Bot is ready!".
 In order for the bot to work propperly you will need to be in a discord voice channel.
 The steps to do that are:
 1. If you don't have a discord account you will have to make one https://discord.com/brand-new
-2. Then put in this link in your browser https://discord.gg/dCrRfbAZ6E it will ask
+2. Then put in this link in your browser https://discord.gg/dCrRfbAZ6E it will ask if you want to join the server, hit accept
 
+After joining the Discord link, join the voice channel.
+In the bot text channel, type .join so that the bot joins the same channel you're in. Then, type .listen and the bot will tell
+
+Watch video to see how to run: 
