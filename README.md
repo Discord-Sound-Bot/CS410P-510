@@ -58,10 +58,17 @@ Unfortunately Discord.py doesn't support it yet, so we had to make do with liste
  
 ## Speech Functions:
 help
+
 play 'song name'
+
 queue 'song name'
+
 pause
+
 resume
+
 time
+
 skip
+
 quit
