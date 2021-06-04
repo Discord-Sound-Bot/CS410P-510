@@ -3,6 +3,17 @@ Noah Funderburgh [nof2@pdx.edu]
 Alejandro Castaneda [cas29@pdx.edu]
 Long Huynh [lonhuynh@pdx.edu]
 
+## The Project Purpose
+In a manner similar to "Hey Google" or "Alexa …" we introduce the concept of a Discord personal assistant.
+This personal assistant will be able to play, pause, queue, and skip music.
+The music will be provided by the youtube API.
+
+## Intended Functionality
+The point of this program is to provide a Discord Bot that utilizes the Speech Recognition open source library to manage music. 
+After configuring and starting the Discord bot, the user should be able to say commands like 
+"Hey Discord, Play 'Sad'"
+"Hey Discord, Pause."
+
 ## Getting Started
 
 To begin, you can start off by cloning the repo. In order for the program
