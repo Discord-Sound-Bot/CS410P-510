@@ -31,7 +31,6 @@ class Music(commands.Cog):
     async def join(self, ctx):
         channel = ctx.author.voice.channel
         await channel.connect()
-        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicCommands"), ctx, "hey Discord has joined the call!")
 
     @commands.command(pass_context=True, aliases=['p', 'pla'])
     async def play(self, ctx):
