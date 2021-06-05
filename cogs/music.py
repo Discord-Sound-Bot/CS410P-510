@@ -30,6 +30,7 @@ class Music(commands.Cog):
     @commands.command(pass_context=True)
     async def join(self, ctx):
         channel = ctx.author.voice.channel
+        print(channel)
         await channel.connect()
 
     @commands.command(pass_context=True, aliases=['p', 'pla'])
