@@ -1,6 +1,5 @@
 SpeechRecognition
-PyAudio
 pyttsx3
-playsound
 youtube_dl
 pytz
+discord
