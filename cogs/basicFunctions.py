@@ -21,6 +21,11 @@ class BasicFuntions(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print("Bot is ready!")
+		
+	@commands.command()
+    async def ping(self, ctx):
+        await ctx.send(f'Your ping is {round(self.client.latency * 1000)}ms')
+
 
     @commands.command()
     async def listen(self, ctx):
