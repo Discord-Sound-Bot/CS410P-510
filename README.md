@@ -42,8 +42,8 @@ After configuring and starting the Discord bot, the user is be able to say comma
 
 ## Installation
 ---
-1. Clone the repo. 
-2. The machine you're using this with needs `ffmpeg`. If you do not have ffmpeg, check out this Youtube tutorial for [windows](https://www.youtube.com/watch?v=r1AtmY-RMyQ), or you can use `brew install ffmpeg` if you have Homebrew. If you can successfully run `ffmpeg` in the command prompt, you can proceed.
+1. Clone the repo. Run `pip3 install -r requirements.txt`, preferrably in a Virtual Environment. *Note: Some linux users may also need to install libffi-devel*
+2. The machine you're using running this on requires `ffmpeg`. If you do not have ffmpeg, check out this Youtube tutorial for [windows](https://www.youtube.com/watch?v=r1AtmY-RMyQ), or you can use `brew install ffmpeg` if you have Homebrew. Proceed once you can successfully run `ffmpeg` in the command prompt.
 3. The bot requires an active Discord voice channel, as well as an account to run. If you don't have one, create an account at https://discord.com/brand-new
 4. Then, connect to the [server](https://discord.gg/dCrRfbAZ6E ) provided by copying and pasting this link, and clicking 'Accept': https://discord.gg/dCrRfbAZ6E 
 5. After joining the Discord link, join the voice channel by clicking on the #general voice chat (has the audio icon to the left of it).
@@ -55,16 +55,13 @@ After configuring and starting the Discord bot, the user is be able to say comma
 ## Results
 ---
 ### What worked? What didn't? 
-Our initial project proposal involved using CMU Sphinx to detect the speech and translate it into 'commands'. 
-However, CMU Sphinx had incredibly low accuracy and performed incredibly slow. 
+Our initial project proposal involved using CMU Sphinx to detect the speech and translate it into 'commands'. We were planning on having CMU Sphinx launch, write these commands into the bot, and have the bot execute them. Shortly after, we ran into problems where CMU Sphinx had incredibly low accuracy and performed incredibly slow. The goal was unrealistic with how botched the microphone was, and creating a small dictionary of vocabulary didn't help make it any quicker. 
 
-After diving a little into the rabbit hole, we decided to pivot towards the open source Speech Recognition library. 
-Unsurpisingly, Google's model was incredibly accurate and provided the functionality that we were hoping to get.
-Another problem we faced was Discord's API is very inconsistent with their audio issues.
+After diving a little into the rabbit hole, we decided to pivot towards the open source Speech Recognition library. We compared the models available to use and unsurpisingly, Google's model was incredibly accurate and provided the functionality at the speed that we were hoping to get.
 
-Despite the constant advancement on their repository, it is still not in a stable version that we could use for this project. 
-Instead, we decided to switch the bot to run locally, listening to the 'users' commands rather than the whole server's.
+It was once we had our Speech Recognition working that we realized Discord's API is very inconsistent with supporting audio. While some versions have great support, all of it is technically 'unofficial' and especially less supported on the Python interface. It wasn't in a stable version we could really use for this project, filled with bugs and disconnects. Instead, we decided to switch the bot to run locally. Rather than listening to the 'Discord' itself, it will listen to the microphone of the user that is speaking. 
 
-In the future, we would like to have it listen to Discord directly, so that more people can make use of the bot.
-Unfortunately Discord.py doesn't support it yet, so we had to make do with listening to local audio instead.
- 
+In the end, we turned out very satisfied with the project. Depsite not being as reliable or consistent, that's just the state of the sound recognition. 
+
+### Future Advancements
+In the future, we'd love to use Discord directly through its API so that more people could make use of the bot. We'd also like to have a more reliable interface, including more user-friendliness (something like Siri beeping when it hears you).
