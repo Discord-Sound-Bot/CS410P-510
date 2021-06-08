@@ -21,7 +21,7 @@ class BasicFuntions(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print("Bot is ready!")
-		
+
     @commands.command()
     async def ping(self, ctx):
         await ctx.send(f'Your ping is {round(self.client.latency * 1000)}ms')
@@ -49,6 +49,8 @@ class BasicFuntions(commands.Cog):
                         await music.Music.stop(self.client.get_cog("Music"), ctx)
                     if 'time' in phrase:
                         await self.time(ctx)
+                    if 'help' in phrase:
+                        await music.Music.helpMusic(self.client.get_cog("Music"), ctx)
                     if 'quit' in phrase:
                         await self.tts(ctx, "shutting down")
                         quit = False
@@ -107,6 +109,7 @@ class BasicFuntions(commands.Cog):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
             ydl.download([url])
+
 
 def setup(client):
     client.add_cog(BasicFuntions(client))
