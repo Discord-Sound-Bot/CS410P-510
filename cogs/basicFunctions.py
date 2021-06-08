@@ -59,6 +59,7 @@ class BasicFuntions(commands.Cog):
 
     @commands.command()
     async def speech(self, ctx):
+        await self.tts(ctx, "Hey Discord is now listening!")
         listener = sr.Recognizer()
         try:
             with sr.Microphone() as source:
