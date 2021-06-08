@@ -28,6 +28,7 @@ class BasicFuntions(commands.Cog):
 
     @commands.command()
     async def listen(self, ctx):
+        await self.tts(ctx, "Hey Discord is now listening!")
         quit = True
         discord = False
         while quit:
@@ -50,7 +51,6 @@ class BasicFuntions(commands.Cog):
                     if 'time' in phrase:
                         await self.time(ctx)
                     if 'help' in phrase:
-                        await self.tts(ctx, "Hey Discord is now listening!")
                         await music.Music.helpMusic(self.client.get_cog("Music"), ctx)
                     if 'quit' in phrase:
                         await self.tts(ctx, "shutting down")
@@ -60,7 +60,6 @@ class BasicFuntions(commands.Cog):
 
     @commands.command()
     async def speech(self, ctx):
-        await self.tts(ctx, "Hey Discord is now listening!")
         listener = sr.Recognizer()
         try:
             with sr.Microphone() as source:
