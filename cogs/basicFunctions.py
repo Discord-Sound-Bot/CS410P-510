@@ -50,6 +50,7 @@ class BasicFuntions(commands.Cog):
                     if 'time' in phrase:
                         await self.time(ctx)
                     if 'help' in phrase:
+						 await self.tts(ctx, "Hey Discord is now listening!")
                         await music.Music.helpMusic(self.client.get_cog("Music"), ctx)
                     if 'quit' in phrase:
                         await self.tts(ctx, "shutting down")
