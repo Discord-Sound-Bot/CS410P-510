@@ -24,6 +24,8 @@ After configuring and starting the Discord bot, the user is be able to say comma
 "Hey Discord, Pause."
 
 ### Available Commands:
+How to use Commands https://media.pdx.edu/media/t/1_5hxpmv9m
+
 *help* : Provides a chat message with what commands are available for you to use.
 
 *play 'song name'*: Plays [song name]. Finds the song from Youtube.
