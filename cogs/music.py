@@ -12,7 +12,6 @@ from cogs import basicFunctions
 queues = {}
 
 
-
 class Music(commands.Cog):
 
     def __init__(self, client):
@@ -21,8 +20,8 @@ class Music(commands.Cog):
     @commands.command(pass_contex=True, aliases=['helpmusic'])
     async def helpMusic(self, ctx):
         embed = discord.Embed(
-            title=":musical_note: Music Commands",
-            description="`join`,`play`,`pause`,`resume`,`stop`,`queue`,`leave`",
+            title=":musical_note: Commands",
+            description="`help`,`join`,`play`,`pause`,`time`,`resume`,`skip`,`queue`,`quit`",
             colour=discord.Colour.blue()
         )
         await ctx.send(embed=embed)
@@ -31,11 +30,12 @@ class Music(commands.Cog):
     async def join(self, ctx):
         channel = ctx.author.voice.channel
         await channel.connect()
-        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicFunctions"), ctx, "Hey Discord has joined the call")
+        await basicFunctions.BasicFuntions.tts(self.client.get_cog("BasicCommands"), ctx,
+                                               "hey Discord has joined the call!")
 
     @commands.command(pass_context=True, aliases=['p', 'pla'])
     async def play(self, ctx):
-
+        name = ""
         def check_queue():
 
             Queue_infile = os.path.isdir("./Queue")
@@ -176,7 +176,7 @@ class Music(commands.Cog):
 
         ydl_opts = {
             'format': 'bestaudio/best',
-            'quiet': True,
+            'quiet': False,
             'outtmpl': queue_path,
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',

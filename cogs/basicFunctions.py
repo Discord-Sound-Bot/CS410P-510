@@ -23,10 +23,6 @@ class BasicFuntions(commands.Cog):
         print("Bot is ready!")
 
     @commands.command()
-    async def ping(self, ctx):
-        await ctx.send(f'Your ping is {round(self.client.latency * 1000)}ms')
-
-    @commands.command()
     async def listen(self, ctx):
         await self.tts(ctx, "Hey Discord is now listening!")
         quit = True
@@ -110,7 +106,6 @@ class BasicFuntions(commands.Cog):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             print("Downloading audio now\n")
             ydl.download([url])
-
-
+			
 def setup(client):
     client.add_cog(BasicFuntions(client))

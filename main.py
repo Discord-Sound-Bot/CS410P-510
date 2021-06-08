@@ -32,4 +32,6 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run("ODQ1MTIyMzYwNjAwNDI4NTk1.YKcXiA.pp3FOBDgxCyykMPnCh3p56JmIKQ")
+my_file = open("token.txt", "r")
+TOKEN = my_file.read()
+client.run(TOKEN)
