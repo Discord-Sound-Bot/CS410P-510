@@ -45,14 +45,15 @@ How to use Commands https://media.pdx.edu/media/t/1_5hxpmv9m
 ## Installation
 ---
 1. Clone the repo. Run `pip3 install -r requirements.txt`, preferrably in a Virtual Environment. *Note: Some linux users may also need to install libffi-devel*
-2. The machine you're using running this on requires `ffmpeg`. If you do not have ffmpeg, check out this Youtube tutorial for [windows](https://www.youtube.com/watch?v=r1AtmY-RMyQ), or you can use `brew install ffmpeg` if you have Homebrew. Proceed once you can successfully run `ffmpeg` in the command prompt.
-3. The bot requires an active Discord voice channel, as well as an account to run. If you don't have one, create an account at https://discord.com/brand-new
-4. Then, connect to the [server](https://discord.gg/dCrRfbAZ6E ) provided by copying and pasting this link, and clicking 'Accept': https://discord.gg/dCrRfbAZ6E 
-5. After joining the Discord link, join the voice channel by clicking on the #general voice chat (has the audio icon to the left of it).
-6. Start the bot by running `python3 main.py`. 
-7. In the #bot text channel, type .join so that the bot joins the voice channel with you, then type .listen to begin the 'listening' process.
-8. Execute commands by beginning with "Hey Discord", followed by what command you're hoping for. Check above for available functionality.
-9. The bot will exit after a few minutes of inactivity or if you say "Hey Discord, leave."
+2. Copy and paste the token ( We sent it in the submition text box).
+3. The machine you're using running this on requires `ffmpeg`. If you do not have ffmpeg, check out this Youtube tutorial for [windows](https://www.youtube.com/watch?v=r1AtmY-RMyQ), or you can use `brew install ffmpeg` if you have Homebrew. Proceed once you can successfully run `ffmpeg` in the command prompt.
+4. The bot requires an active Discord voice channel, as well as an account to run. If you don't have one, create an account at https://discord.com/brand-new
+5. Then, connect to the [server](https://discord.gg/dCrRfbAZ6E ) provided by copying and pasting this link, and clicking 'Accept': https://discord.gg/dCrRfbAZ6E 
+6. After joining the Discord link, join the voice channel by clicking on the #general voice chat (has the audio icon to the left of it).
+7. Start the bot by running `python3 main.py`. 
+8. In the #bot text channel, type .join so that the bot joins the voice channel with you, then type .listen to begin the 'listening' process.
+9. Execute commands by beginning with "Hey Discord", followed by what command you're hoping for. Check above for available functionality.
+10. The bot will exit after a few minutes of inactivity or if you say "Hey Discord, leave."
 
 ## Results
 ---
